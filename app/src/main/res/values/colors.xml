@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FFFFFF</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="select_filter">#221f20</color>
+    <color name="normal_filter">#8a8889</color>
+    <color name="color_option_menu">#FF3990</color>
+</resources>
