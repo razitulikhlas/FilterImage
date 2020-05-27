@@ -19,6 +19,7 @@ import com.example.filterimage.adapter.ThumbnailAdapter;
 import com.example.filterimage.interfaces.FiltersListFragmentListener;
 import com.example.filterimage.utils.BitmapUtils;
 import com.example.filterimage.utils.SpaceItemDecoration;
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.zomato.photofilters.FilterPack;
 import com.zomato.photofilters.imageprocessors.Filter;
 import com.zomato.photofilters.utils.ThumbnailItem;
@@ -31,13 +32,24 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FiltersListFragment extends Fragment implements FiltersListFragmentListener{
+public class FiltersListFragment extends BottomSheetDialogFragment implements FiltersListFragmentListener{
     private RecyclerView recyclerView;
     private ThumbnailAdapter adapter;
     List<ThumbnailItem> thumbnailItems;
     public static final String TAG = "THUMBS";
 
     FiltersListFragmentListener listener;
+
+    static FiltersListFragment instance;
+    static Bitmap bitmap;
+    public static FiltersListFragment getInstance(Bitmap bitmapsave){
+        bitmap = bitmapsave;
+        if(instance == null) {
+            instance = new FiltersListFragment();
+
+        }
+        return instance;
+    }
 
     public void setListener(FiltersListFragmentListener listener)  {
         this.listener = listener;
@@ -60,7 +72,9 @@ public class FiltersListFragment extends Fragment implements FiltersListFragment
         View view =inflater.inflate(R.layout.fragment_filters_list, container, false);
         thumbnailItems = new ArrayList<>();
         adapter = new ThumbnailAdapter(thumbnailItems,this,getActivity());
-        displayThumbnail(null);
+        displayThumbnail(bitmap);
+
+
         recyclerView = view.findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false));
         recyclerView.setItemAnimator(new DefaultItemAnimator());

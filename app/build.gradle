@@ -35,6 +35,10 @@ dependencies {
 
     implementation 'com.karumi:dexter:6.1.0'
     implementation 'info.androidhive:imagefilters:1.0.7'
+    implementation 'ja.burhanrashid52:photoeditor:1.0.0'
+    implementation 'io.github.rockerhieu:emojicon:1.4.2'
+    implementation 'com.github.yalantis:ucrop:2.2.5-native'
+//    implementation 'com.github.rockerhieu:emojicon:v1.4.2'
 
 
 }

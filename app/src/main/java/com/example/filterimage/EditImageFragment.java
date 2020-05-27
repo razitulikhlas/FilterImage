@@ -11,16 +11,30 @@ import android.view.ViewGroup;
 import android.widget.SeekBar;
 
 import com.example.filterimage.interfaces.EditImageFragmentListener;
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class EditImageFragment extends Fragment implements SeekBar.OnSeekBarChangeListener {
+public class EditImageFragment extends BottomSheetDialogFragment implements SeekBar.OnSeekBarChangeListener {
 
     private EditImageFragmentListener listener;
     private SeekBar seekBar_brightness,seekBar_contrast,seekBar_saturation;
 
+    static EditImageFragment instance;
+
+//    public static EditImageFragment getInstance(){
+//        if (instance == null)
+//            instance = new EditImageFragment();
+//        return instance;
+//    }
+
+    public static EditImageFragment getInstance(){
+        if(instance == null)
+            instance = new EditImageFragment();
+        return instance;
+    }
 
     public void setListener(EditImageFragmentListener listener) {
         this.listener = listener;
@@ -97,4 +111,6 @@ public class EditImageFragment extends Fragment implements SeekBar.OnSeekBarChan
         seekBar_contrast.setProgress(0);
         seekBar_saturation.setProgress(16);
     }
+
+
 }
